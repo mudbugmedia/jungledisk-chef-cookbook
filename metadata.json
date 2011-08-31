@@ -1,0 +1,44 @@
+{
+  "dependencies": {
+  },
+  "name": "jungledisk",
+  "maintainer_email": "info@mudbugmedia.com",
+  "attributes": {
+    "jungledisk/serial": {
+      "required": "required",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "type": "string",
+      "recipes": [
+
+      ],
+      "display_name": "Serial Number",
+      "description": "Serial number provided by jungledisk.com control panel"
+    }
+  },
+  "license": "Apache 2.0",
+  "suggestions": {
+  },
+  "platforms": {
+    "ubuntu": ">= 0.0.0"
+  },
+  "maintainer": "Mudbug Media, Inc.",
+  "long_description": "= DESCRIPTION:\n\nConfigures and registers the server-side {JungleDisk}[https://www.jungledisk.com/] backup daemon, used for {Rackspace Apps Server Backup}[http://www.rackspace.com/apps/backup_and_collaboration/data_backup_software/].\n\nThis is a cookbook for use with {Opscode's chef}[http://www.opscode.com/chef/].\n\n* JungleDisk chef Cookbook Homepage: http://github.com/mudbugmedia/jungledisk-chef-cookbook\n\n= REQUIREMENTS:\n\nThis package has only been tested on Ubuntu 11.04 / chef 0.10.2.  It has un-tested support for Debian, and Redhat variants. All other platforms have not been fully implemented.\n\n= ATTRIBUTES:\n* <tt>[:jungledisk][:serial]</tt> => Serial number provided by jungledisk.com control panel\n* <tt>[:jungledisk][:proxy][:enabled]</tt> => Enable proxying? (Fixnum: 0 or 1)\n* <tt>[:jungledisk][:proxy][:server]</tt> => Proxy server hostname\n* <tt>[:jungledisk][:proxy][:username]</tt> => Proxy server username\n* <tt>[:jungledisk][:proxy][:password]</tt> => Proxy server password\n* <tt>[:jungledisk][:proxy][:type]</tt> => Proxy server type (see templates/jungle-disk-license.xml.erb for details)\n\n= USAGE:\n\nSignup for JungleDisk at http://rackspace.com/apps/.  You will receive a unique serial number for each licensed server in your account.  This serial number can be fetched from the jungledisk.com control panel, which is reachable for Rackspace App cusomters at http://cp.rackspace.com/.\n\nEdit each node's attributes (knife node edit foobar) to set the serial number attribute: <tt>{ \"jungledisk\": { \"serial\": \"XXXXXXXXXX\" } }</tt>\n\n= LICENSE & AUTHOR:\n\nAuthor:: Gabe Martin-Dempesy (<gabe-jungledisk-chef-cookbook@mudbugmedia.com>)\nCopyright:: 2011, Mudbug Media, Inc\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n\nThis software is independently developed and maintained by {Mudbug Media}[http://mudbugmedia.com] and Gabe Martin-Dempesy.  JungleDisk, Rackspace, and Opscode do not provide support for this package.",
+  "version": "0.0.1",
+  "recommendations": {
+  },
+  "recipes": {
+    "jungledisk::default": "Download and install JungleDiskServer package, and configure the license xml"
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "replacing": {
+  },
+  "description": "Installs/Configures jungledisk",
+  "providing": {
+  }
+}
