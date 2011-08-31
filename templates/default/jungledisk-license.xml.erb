@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+<LicenseConfig>
+<licenseKey><%= node[:jungledisk][:serial] %></licenseKey>
+<proxyServer>
+<enabled><%= node[:jungledisk][:proxy][:enabled] %></enabled>
+<proxyServer><%= node[:jungledisk][:proxy][:server] %></proxyServer>
+<userName><%= node[:jungledisk][:proxy][:username] %></userName>
+<password><%= node[:jungledisk][:proxy][:password] %></password>
+<!--
+The following values can be used to change
+the type of proxy to be connected to.  
+
+0 = HTTP/1.1 (most common proxy type) 
+1 = HTTP/1.0 
+2 = SOCKS4 
+3 = SOCKS4A 
+4 = SOCKS5
+5 = SOCKS5 (send hostnames instead of IPs)
+--> 
+<proxyType><%= node[:jungledisk][:proxy][:type] %></proxyType> 
+</proxyServer>
+</LicenseConfig>
+</configuration>

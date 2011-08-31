@@ -1,0 +1,44 @@
+= DESCRIPTION:
+
+Configures and registers the server-side {JungleDisk}[https://www.jungledisk.com/] backup daemon, used for {Rackspace Apps Server Backup}[http://www.rackspace.com/apps/backup_and_collaboration/data_backup_software/].
+
+This is a cookbook for use with {Opscode's chef}[http://www.opscode.com/chef/].
+
+* JungleDisk chef Cookbook Homepage: http://github.com/mudbugmedia/jungledisk-chef-cookbook
+
+= REQUIREMENTS:
+
+This package has only been tested on Ubuntu 11.04 / chef 0.10.2.  It has un-tested support for Debian, and Redhat variants. All other platforms have not been fully implemented.
+
+= ATTRIBUTES:
+* <tt>[:jungledisk][:serial]</tt> => Serial number provided by jungledisk.com control panel
+* <tt>[:jungledisk][:proxy][:enabled]</tt> => Enable proxying? (Fixnum: 0 or 1)
+* <tt>[:jungledisk][:proxy][:server]</tt> => Proxy server hostname
+* <tt>[:jungledisk][:proxy][:username]</tt> => Proxy server username
+* <tt>[:jungledisk][:proxy][:password]</tt> => Proxy server password
+* <tt>[:jungledisk][:proxy][:type]</tt> => Proxy server type (see templates/jungle-disk-license.xml.erb for details)
+
+= USAGE:
+
+Signup for JungleDisk at http://rackspace.com/apps/.  You will receive a unique serial number for each licensed server in your account.  This serial number can be fetched from the jungledisk.com control panel, which is reachable for Rackspace App cusomters at http://cp.rackspace.com/.
+
+Edit each node's attributes (knife node edit foobar) to set the serial number attribute: <tt>{ "jungledisk": { "serial": "XXXXXXXXXX" } }</tt>
+
+= LICENSE & AUTHOR:
+
+Author:: Gabe Martin-Dempesy (<gabe-jungledisk-chef-cookbook@mudbugmedia.com>)
+Copyright:: 2011, Mudbug Media, Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+This software is independently developed and maintained by {Mudbug Media}[http://mudbugmedia.com] and Gabe Martin-Dempesy.  JungleDisk, Rackspace, and Opscode do not provide support for this package.
