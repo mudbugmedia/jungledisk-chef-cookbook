@@ -39,8 +39,8 @@ package "junglediskserver" do
   end
 end
 
-template "/etc/jungledisk/jungledisk-license.xml" do
-  source "jungledisk-license.xml.erb"
+template "/etc/jungledisk/junglediskserver-license.xml" do
+  source "junglediskserver-license.xml.erb"
   owner "root"
   group "root"
   mode "0400"
