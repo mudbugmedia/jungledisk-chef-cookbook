@@ -18,9 +18,9 @@
 #
 
 jungledisk_package = value_for_platform(
-  %w(centos redhat suse fedora) => { "default" => "junglediskserver-3160-0.#{node[:kernel][:machine].include?('64') ? "x86_64" : "i386"}.rpm" },
-  %w(debian ubuntu) => { "default" => "junglediskserver_316-0_#{node[:kernel][:machine].include?('64') ? "amd64" : "i386"}.deb" },
-  "default" => "junglediskserver#{node[:kernel][:machine].include?('64') == "i386" ? "64-" : ""}3160.tar.gz"
+  %w(centos redhat suse fedora) => { "default" => "junglediskserver-#{node[:jungledisk][:version]}0-0.#{node[:kernel][:machine].include?('64') ? "x86_64" : "i386"}.rpm" },
+  %w(debian ubuntu) => { "default" => "junglediskserver_#{node[:jungledisk][:version]}-0_#{node[:kernel][:machine].include?('64') ? "amd64" : "i386"}.deb" },
+  "default" => "junglediskserver#{node[:kernel][:machine].include?('64') == "i386" ? "64-" : ""}#{node[:jungledisk][:version]}0.tar.gz"
 )
 
 remote_file "/usr/src/#{jungledisk_package}" do
@@ -49,7 +49,7 @@ end
 
 service "junglediskserver" do
   action [:enable, :start]
-  
+
   supports :restart => true
   # JungleDisk's init script does not have a #!, which causes ruby to error with `Errno::ENOEXEC: Exec format error - /etc/init.d/junglediskserver`
   start_command "/bin/sh /etc/init.d/junglediskserver start"
