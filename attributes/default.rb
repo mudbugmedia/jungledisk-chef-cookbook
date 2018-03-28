@@ -9,3 +9,5 @@ node.default[:jungledisk][:proxy] = {
   :password => '',
   :type => 0
 }
+
+node.default[:jungledisk][:version] = '323'
