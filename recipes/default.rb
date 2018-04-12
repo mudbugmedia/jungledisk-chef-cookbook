@@ -29,6 +29,10 @@ remote_file "/usr/src/#{jungledisk_package}" do
   action :create_if_missing
 end
 
+package 'libfuse2' do
+  action :install
+end
+
 package "junglediskserver" do
   source "/usr/src/#{jungledisk_package}"
   case node[:platform]
