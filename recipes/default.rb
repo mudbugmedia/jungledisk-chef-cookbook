@@ -18,15 +18,19 @@
 #
 
 jungledisk_package = value_for_platform(
-  %w(centos redhat suse fedora) => { "default" => "junglediskserver-#{node[:jungledisk][:version]}0-0.#{node[:kernel][:machine].include?('64') ? "x86_64" : "i386"}.rpm" },
-  %w(debian ubuntu) => { "default" => "junglediskserver_#{node[:jungledisk][:version]}-0_#{node[:kernel][:machine].include?('64') ? "amd64" : "i386"}.deb" },
-  "default" => "junglediskserver#{node[:kernel][:machine].include?('64') == "i386" ? "64-" : ""}#{node[:jungledisk][:version]}0.tar.gz"
+  %w(centos redhat suse fedora) => { "default" => "junglediskserver-#{node[:jungledisk][:version]}0-0.#{node[:kernel][:machine].include?('64') ? "x86_64" : "i686"}.rpm" },
+  %w(debian ubuntu) => { "default" => "junglediskserver_#{node[:jungledisk][:version]}-0_#{node[:kernel][:machine].include?('64') ? "amd64" : "i686"}.deb" },
+  "default" => "junglediskserver#{node[:kernel][:machine].include?('64') == "i686" ? "64-" : ""}#{node[:jungledisk][:version]}0.tar.gz"
 )
 
 remote_file "/usr/src/#{jungledisk_package}" do
   source "https://downloads.jungledisk.com/jungledisk/#{jungledisk_package}"
   mode "0644"
   action :create_if_missing
+end
+
+package 'libfuse2' do
+  action :install
 end
 
 package "junglediskserver" do
